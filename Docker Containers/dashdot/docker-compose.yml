@@ -1,0 +1,12 @@
+version: "3"
+services:
+  #--------------------------------------------------------------------------------------------#
+  #                             Dashdot - A modern server stat dashboard                       #
+  #--------------------------------------------------------------------------------------------#
+  dozzle:
+    container_name: dashdot
+    image: mauricenino/dashdot:latest
+    ports:
+      - "8002:3001"
+    restart: unless-stopped
+    privileged: true

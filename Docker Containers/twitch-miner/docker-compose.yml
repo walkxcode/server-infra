@@ -1,0 +1,16 @@
+version: "3"
+services:
+  #--------------------------------------------------------------------------------------------#
+  #                             Twitch Miner - Haha free channel points                        #
+  #--------------------------------------------------------------------------------------------#
+  dozzle:
+    container_name: twitch-miner
+    image: tkdalex/twitch-channel-points-miner-v2:latest
+    ports:
+      - "8010:5000"
+    volumes:
+      - "/data/docker/twitch-miner/analytics:/usr/src/app/analytics"
+      - "/data/docker/twitch-miner/cookies:/usr/src/app/cookies"
+      - "/data/docker/twitch-miner/logs:/usr/src/app/logs"
+      - "/data/docker/twitch-miner/run.py:/usr/src/app/run.py"
+    restart: unless-stopped

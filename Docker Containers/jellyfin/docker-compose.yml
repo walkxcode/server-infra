@@ -1,0 +1,19 @@
+version: "3"
+services:
+  #--------------------------------------------------------------------------------------------#
+  #                                Jellyfin - Your own media system                            #
+  #--------------------------------------------------------------------------------------------#
+  nginx:
+    container_name: jellyfin
+    image: "linuxserver/jellyfin:latest"
+    restart: unless-stopped
+    ports:
+      - "1900:1900/tcp"
+      - "8096:8096/tcp"
+      - "7359:7359/udp"
+    volumes:
+      - "/data/docker/jellyfin/config:/config"
+      - "/data/nas/media/movies:/media/movies"
+      - "/data/nas/CD_DVD/CD:/media/music"
+      - "/data/nas/media/shows:/media/shows"
+      - "/data/nas/CD_DVD/DVD:/media/dvds"

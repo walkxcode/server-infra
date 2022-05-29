@@ -1,0 +1,11 @@
+version: "3"
+services:
+  #--------------------------------------------------------------------------------------------#
+  #                                   Drawio - Make diagrams easily                            #
+  #--------------------------------------------------------------------------------------------#
+  drawio:
+    container_name: drawio
+    restart: unless-stopped
+    ports:
+      - "8013:8080"
+    image: jgraph/drawio

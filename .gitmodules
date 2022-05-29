@@ -1,0 +1,3 @@
+[submodule "Docker Containers/nginx/walkxorg/www/walkx.org"]
+	path = Docker Containers/nginx/walkxorg/www/walkx.org
+	url = https://github.com/walkxhub/walkx.org

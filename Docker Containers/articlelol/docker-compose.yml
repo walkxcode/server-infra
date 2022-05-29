@@ -1,0 +1,35 @@
+version: "3.1"
+services:
+  #--------------------------------------------------------------------------------------------#
+  #                                 Ghost - Easy content management                            #
+  #--------------------------------------------------------------------------------------------#
+  ghost:
+    container_name: articlelol
+    image: ghost:latest
+    restart: unless-stopped
+    ports:
+      - "5000:2368"
+    environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: password
+      database__connection__database: ghost
+      # This URL *has* to be the url you are using to connect. (Eg. Testing environments will most likely need localhost:8080).
+      url: https://article.lol
+    volumes:
+      - "/data/docker/articlelol/ghost/content:/var/lib/ghost/content"
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+
+  db:
+    container_name: articlelol_db
+    # Change to mysql:8.0 for better Amd64 support.
+    image: mysql:8.0-oracle
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - "/data/docker/articlelol/db:/var/lib/mysql"
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"

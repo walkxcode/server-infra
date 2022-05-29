@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+  #--------------------------------------------------------------------------------------------#
+  #               Nginx - Advanced Load Balancer, Web Server, & Reverse Proxy                  #
+  #--------------------------------------------------------------------------------------------#
+  # Walkx.org
+  walkxorg:
+    image: "linuxserver/nginx:latest"
+    restart: unless-stopped
+    ports:
+      - "7001:80"
+      - "7002:443"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Europe/Amsterdam"
+    volumes:
+      - "/data/docker/nginx/walkxorg:/config"
+
+  # Blocked page
+  blocked:
+    image: "linuxserver/nginx:latest"
+    restart: unless-stopped
+    ports:
+      - "7020:80"
+      - "7021:443"
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: "Europe/Amsterdam"
+    volumes:
+      - "/data/docker/nginx/blocked:/config"
